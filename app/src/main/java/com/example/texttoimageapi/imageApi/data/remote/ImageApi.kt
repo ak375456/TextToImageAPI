@@ -1,7 +1,7 @@
 package com.example.texttoimageapi.imageApi.data.remote
 
 
-import com.example.texttoimageapi.imageApi.domain.model.ImageResponse
+
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -10,7 +10,7 @@ import retrofit2.http.POST
 
 interface ImageApiService {
     @Headers(
-        "X-RapidAPI-Key: YOUR_KEY_HERE",
+        "X-RapidAPI-Key:eebe42a5c5mshac54fd6db7d1552p19bb75jsn8ed2a745a348",
         "X-RapidAPI-Host: sdxl.p.rapidapi.com"
     )
     @POST("v1/txt2img")

@@ -1,5 +1,6 @@
 package com.example.texttoimageapi.di
 
+import android.content.Context
 import com.example.texttoimageapi.imageApi.data.remote.ImageApiService
 import com.example.texttoimageapi.imageApi.data.repository.ImageRepositoryImpl
 import com.example.texttoimageapi.imageApi.domain.repository.ImageRepository
@@ -7,6 +8,7 @@ import com.example.texttoimageapi.imageApi.domain.use_cases.generate_image_use_c
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,8 +30,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideImageRepository(apiService: ImageApiService): ImageRepository {
-        return ImageRepositoryImpl(apiService)
+    fun provideImageRepository(@ApplicationContext context: Context, apiService: ImageApiService): ImageRepository {
+        return ImageRepositoryImpl(
+            apiService,
+            context = context
+        )
     }
 
     @Provides
@@ -37,4 +42,6 @@ object AppModule {
     fun provideGenerateImageUseCase(repository: ImageRepository): GenerateImageUseCase {
         return GenerateImageUseCase(repository)
     }
+    
+    
 }

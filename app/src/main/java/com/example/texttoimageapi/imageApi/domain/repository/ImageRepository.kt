@@ -5,4 +5,5 @@ import com.example.texttoimageapi.util.Resource
 
 interface ImageRepository {
     suspend fun generateImage(prompt: String): Resource<List<ImageResponse>>
+    suspend fun saveImage(imageUrl: String): Resource<Unit>
 }
